@@ -4,6 +4,22 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 export default createSchema({
   name: 'default',
   types: schemaTypes.concat([
-    // TODO add types here
+    {
+      title: 'Photo Gallery',
+      name: 'gallery',
+      type: 'document',
+      fields: [
+        {
+          title: 'Photo Gallery',
+          name: 'photos',
+          type: 'array',
+          of: [{ type: 'image' }],
+          options: {
+            layout: 'grid'
+          },
+          validation: Rule => Rule.required().length(12)
+        }
+      ]
+    }
   ]),
 })
